@@ -344,9 +344,6 @@ function manejarMovimientoArrastre(celda) {
 // ====================================================================
 // ========================= 6. MANEJO DE ENTRADA (Eventos) =========================
 // ====================================================================
-// ====================================================================
-// ========================= 6. MANEJO DE ENTRADA (Eventos) =========================
-// ====================================================================
 
 function obtenerCeldaDesdeEvento(evento) {
     // Aseguramos que tomamos las coordenadas del toque si es un evento táctil
@@ -405,10 +402,6 @@ function finalizarArrastre() {
     isMouseDown = false; 
     ultimaCeldaProcesada = null; 
     
-    // ⭐ CORRECCIÓN DEL BUG DE BLOQUEO: NO ANULAMOS colorActivo.
-    // Dejamos que el siguiente clic decida el color activo.
-    // Esto previene que el juego se bloquee tras un arrastre incompleto.
-    // colorActivo = null; // Línea eliminada
 }
 
 // Escuchadores de Eventos
