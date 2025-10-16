@@ -157,8 +157,9 @@ canvas {
     }
 
         #juegoCanvas {
-            width: 90%;
-            height: auto;
+            display: block;
+            width: 360px; 
+            height: 640px;
             touch-action: none;
         }
     }
