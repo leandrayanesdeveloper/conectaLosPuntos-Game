@@ -159,5 +159,6 @@ canvas {
         #juegoCanvas {
             width: 90%;
             height: auto;
+            touch-action: none;
         }
     }
