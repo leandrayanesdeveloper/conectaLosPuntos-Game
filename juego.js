@@ -344,11 +344,17 @@ function manejarMovimientoArrastre(celda) {
 // ====================================================================
 // ========================= 6. MANEJO DE ENTRADA (Eventos) =========================
 // ====================================================================
+// ====================================================================
+// ========================= 6. MANEJO DE ENTRADA (Eventos) =========================
+// ====================================================================
 
 function obtenerCeldaDesdeEvento(evento) {
+    // Aseguramos que tomamos las coordenadas del toque si es un evento táctil
+    const eventoDeCoordenadas = evento.touches ? evento.touches[0] : evento;
+    
     const rect = canvas.getBoundingClientRect();
-    const clickX = evento.clientX - rect.left; 
-    const clickY = evento.clientY - rect.top; 
+    const clickX = eventoDeCoordenadas.clientX - rect.left; 
+    const clickY = eventoDeCoordenadas.clientY - rect.top; 
 
     if (clickX < 0 || clickX >= CANVAS_SIZE || clickY < 0 || clickY >= CANVAS_SIZE) {
         return null; 
@@ -362,11 +368,18 @@ function obtenerCeldaDesdeEvento(evento) {
 
 function iniciarArrastre(evento) {
     isMouseDown = true;
+    
+    if (evento.touches) {
+        // Previene el scroll del navegador al inicio del toque
+        evento.preventDefault(); 
+    }
+    
     const celdaClicada = obtenerCeldaDesdeEvento(evento.touches ? evento.touches[0] : evento);
     
     if (celdaClicada) {
         manejarInicioArrastre(celdaClicada);
         
+        // Si se inició un color, procesamos el primer movimiento (clic)
         if (colorActivo) {
             manejarMovimientoArrastre(celdaClicada);
         }
@@ -374,12 +387,16 @@ function iniciarArrastre(evento) {
 }
 
 function moverArrastre(evento) {
-    if (!isMouseDown || colorActivo === null) return; 
+    if (!isMouseDown) return; 
 
     if (evento.touches) {
+        // ⭐ CORRECCIÓN TÁCTIL: Esto detiene el scroll de la página y soluciona el problema de sensibilidad.
         evento.preventDefault(); 
     }
-
+    
+    // A partir de aquí, solo procesamos si hay color activo (evita errores si se arrastra fuera del canvas)
+    if (colorActivo === null) return; 
+    
     const celdaActual = obtenerCeldaDesdeEvento(evento.touches ? evento.touches[0] : evento);
     manejarMovimientoArrastre(celdaActual);
 }
@@ -388,7 +405,10 @@ function finalizarArrastre() {
     isMouseDown = false; 
     ultimaCeldaProcesada = null; 
     
-    colorActivo = null; 
+    // ⭐ CORRECCIÓN DEL BUG DE BLOQUEO: NO ANULAMOS colorActivo.
+    // Dejamos que el siguiente clic decida el color activo.
+    // Esto previene que el juego se bloquee tras un arrastre incompleto.
+    // colorActivo = null; // Línea eliminada
 }
 
 // Escuchadores de Eventos
@@ -396,15 +416,18 @@ canvas.addEventListener('mousedown', iniciarArrastre);
 canvas.addEventListener('mousemove', moverArrastre);
 canvas.addEventListener('mouseup', finalizarArrastre);
 canvas.addEventListener('mouseleave', finalizarArrastre);
+
+// Eventos Táctiles
 canvas.addEventListener('touchstart', iniciarArrastre);
 canvas.addEventListener('touchmove', moverArrastre);
 canvas.addEventListener('touchend', finalizarArrastre);
 canvas.addEventListener('touchcancel', finalizarArrastre);
 
-// Manejo de Redimensionamiento de Ventana
+// El reajuste ya no es necesario si el tamaño es fijo
 window.addEventListener('resize', () => {
     actualizarCanvas();
 });
+
 
 // ====================================================================
 // ========================= 7. PERSISTENCIA Y FLUJO DE NIVEL =========================
