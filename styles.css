@@ -13,7 +13,7 @@ body {
     background-blend-mode: multiply;
     background-position: center center;
     background-attachment: fixed; 
-    padding-bottom: 60px;
+    padding-bottom: 50px;
     width: 100%;
     min-height: 100vh;
     margin: 0; 
@@ -82,6 +82,7 @@ footer {
     bottom: 0;
     width: 100%;
     z-index: 1000;
+    transform: translateZ(0);
 }
 
 .footer-container {
@@ -161,10 +162,6 @@ canvas {
         align-items: center;
     }
 
-    .footer-column {
-        flex: 1;
-        min-width: 250px;
-    }
 
         #juegoCanvas {
             touch-action: none;
