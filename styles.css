@@ -110,10 +110,10 @@ a {
 }
 
 canvas {
-    border: 3px solid #1d6ab3;
+    border: 3px solid #4b3ae210;
     border-radius: 10px;
     background-color: #0000006b;
-    box-shadow: inset 0 0 10px #1d6ab3, 0 0 20px #1d6ab3;
+    box-shadow: inset 0 0 10px #3506dd, 0 0 20px #543be015;
 }
 
 #juegoCanvas { 
