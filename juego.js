@@ -63,12 +63,12 @@ const niveles = [
     {
     id: 5,
     puntos: [
-        { color: 'red', inicio: {r: 3, c: 3}, fin: {r: 4, c: 3} },
+        { color: 'red', inicio: {r: 2, c: 3}, fin: {r: 4, c: 3} },
         { color: 'blue', inicio: {r: 1, c: 5}, fin: {r: 5, c: 1} },
         { color: 'green', inicio: {r: 2, c: 2}, fin: {r: 4, c: 4} },
-        { color: 'pink', inicio: {r: 0, c: 0}, fin: {r: 4, c: 2} },
+        { color: 'pink', inicio: {r: 0, c: 1}, fin: {r: 4, c: 2} },
         { color: 'yellow', inicio: {r: 0, c: 6}, fin: {r: 6, c: 6} },
-        { color: 'orange', inicio: {r: 6, c: 0}, fin: {r: 0, c: 1} }
+        { color: 'orange', inicio: {r: 6, c: 0}, fin: {r: 1, c: 0} }
     ]
 }
 ];
