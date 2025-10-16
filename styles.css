@@ -1,0 +1,159 @@
+@font-face {
+    font-family: BebasNeue;
+    src: url(../fonts/BebasNeue-Regular.ttf) format('truetype');
+}
+
+body {
+    font-family: BebasNeue, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    background-image: url('descarga.gif');
+    color: white;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.301);
+    background-blend-mode: multiply;
+    width: 100%;
+    height: 100%;
+}
+
+.navbar {
+    width: 100%;
+    position: relative;  
+    box-shadow: 0 4px 8px 0 rgba(29, 44, 180, 0.342), 0 6px 20px 0 rgba(29, 94, 214, 0.19);
+    margin-bottom: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+
+}
+
+h1 {
+    font-size: 35px;
+    margin: 0;
+    font-family: BebasNeue, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: medium;
+    font-style: normal;
+}
+
+.instrucciones {
+    flex-direction: row;
+    display: flex;
+}
+
+h2  {
+    font-size: 23px;
+    margin: 10px;
+    font-family:  Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+
+
+h3, p {
+    font-size: 18px;
+    padding: 0 10px;
+    margin: 5px;
+    font-family:  Arial, Helvetica, sans-serif;
+
+}
+
+h4 {
+    font-size: 26px;
+    padding: auto;
+    margin: auto;
+    font-weight: normal;
+    width: 150px;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: lighter;
+
+}
+
+p strong {
+    font-weight: bold;
+    color: white;
+}   
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+    color: white;
+}
+
+.footer-column.profile-column {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+    color: white;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+} 
+.parrafo {
+    font-size: 16px;
+    padding: 0 10px;
+    margin: 5px;
+    font-style: italic;
+    font-family:  Arial, Helvetica, sans-serif;
+}
+
+canvas {
+    border: 3px solid #1d6ab3;
+    margin: 20px;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #0000006b;
+    box-shadow: inset 0 0 10px #1d6ab3, 0 0 20px #1d6ab3;
+}
+
+#juegoCanvas { 
+    border: none;
+    margin: 10px;
+    padding: 0;
+    touch-action: none;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3, p {
+        font-size: 16px;
+    }
+
+    .instrucciones {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column {
+        min-width: 100%;
+        margin: 5px 0;
+    }
+
+        #juegoCanvas {
+            width: 90%;
+            height: auto;
+        }
+    }
