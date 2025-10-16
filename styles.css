@@ -11,12 +11,18 @@ body {
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.301);
     background-blend-mode: multiply;
-    justify-content: center;
-    align-items: center;
     background-position: center center;
     background-attachment: fixed; 
+    
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+
     width: 100%;
-    height: 100%;
+    height: 100vh; 
+    margin: 0; 
+    overflow: hidden;
 }
 
 .navbar {
@@ -120,12 +126,14 @@ canvas {
 
 #juegoCanvas { 
     display: block; 
-    margin: 10px;
+    margin: 10px auto; 
     padding: 0;
     touch-action: none;
     
     width: min(90vw, 500px); 
-    height: min(90vh, 500px);
+    height: min(90vh, 500px); 
+    max-width: 500px; 
+    max-height: 500px;
 
 }
     
