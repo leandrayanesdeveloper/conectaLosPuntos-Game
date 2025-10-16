@@ -13,7 +13,7 @@ body {
     background-blend-mode: multiply;
     background-position: center center;
     background-attachment: fixed; 
-
+    padding-bottom: 60px;
     width: 100%;
     min-height: 100vh;
     margin: 0; 
@@ -77,15 +77,22 @@ h4 {
     text-align: center;
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
 .footer-container {
     max-width: 100%;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap; 
     margin-top: 10px;
     text-align: center;
     font-weight: lighter;
-
+    justify-content: center; 
 }
 
 p strong {
@@ -93,15 +100,8 @@ p strong {
     color: white;
 }   
 .footer-column {
-    flex: 1;
-    min-width: 250px;
-    margin: 10px;
-    color: white;
-}
-
-.footer-column.profile-column {
-    flex: 1;
-    min-width: 250px;
+    flex: 1 1 100%; 
+    min-width: unset;  
     margin: 10px;
     color: white;
 }
@@ -162,8 +162,8 @@ canvas {
     }
 
     .footer-column {
-        min-width: 100%;
-        margin: 5px 0;
+        flex: 1;
+        min-width: 250px;
     }
 
         #juegoCanvas {
