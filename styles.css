@@ -127,7 +127,7 @@ canvas {
 #juegoCanvas { 
     display: block; 
     margin: 10px auto; 
-    padding: 0;
+    padding: auto;
     touch-action: none;
     
     width: min(90vw, 500px); 
