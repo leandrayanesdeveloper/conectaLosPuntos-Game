@@ -119,13 +119,16 @@ canvas {
 }
 
 #juegoCanvas { 
-     border: none;
+    display: block; 
     margin: 10px;
     padding: 0;
     touch-action: none;
+    
+    width: min(90vw, 500px); 
+    height: min(90vh, 500px);
+
 }
     
-
 
 /* Responsive Design */
 @media (max-width: 600px) {
@@ -157,8 +160,6 @@ canvas {
     }
 
         #juegoCanvas {
-            width: 360px; 
-            height: 360px;
             touch-action: none;
         }
     }
