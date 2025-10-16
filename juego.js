@@ -9,8 +9,7 @@ const infoElement = document.getElementById('nivel-info');
 
 // Constantes de la Cuadrícula
 const GRID_SIZE = 7; 
-const FIXED_CANVAS_SIZE = 500; 
-let CANVAS_SIZE = FIXED_CANVAS_SIZE; 
+let CANVAS_SIZE;
 let TAMAÑO_CELDA;
 
 // Estado del Juego
@@ -68,11 +67,17 @@ const niveles = [
 // ====================================================================
 
 function ajustarCanvas() {
-    CANVAS_SIZE = FIXED_CANVAS_SIZE;
+    const anchoVisual = canvas.clientWidth; 
+    const altoVisual = canvas.clientHeight;  
+    CANVAS_SIZE = Math.min(anchoVisual, altoVisual);
     canvas.width = CANVAS_SIZE;
     canvas.height = CANVAS_SIZE;
+    
     TAMAÑO_CELDA = CANVAS_SIZE / GRID_SIZE;
+    actualizarCanvas();
 }
+window.addEventListener('resize', ajustarCanvas);
+
 
 function obtenerCentroCelda(fila, columna) {
     const centroX = (columna * TAMAÑO_CELDA) + (TAMAÑO_CELDA / 2);
@@ -366,9 +371,10 @@ function obtenerCeldaDesdeEvento(evento) {
 function iniciarArrastre(evento) {
     isMouseDown = true;
     
-    if (evento.touches) {
-        // Previene el scroll del navegador al inicio del toque
+    if (evento.touches && evento.cancelable) {
+        // Previene el scroll del navegador al inicio del toque, pero solo si es posible.
         evento.preventDefault(); 
+    
     }
     
     const celdaClicada = obtenerCeldaDesdeEvento(evento.touches ? evento.touches[0] : evento);
@@ -386,12 +392,12 @@ function iniciarArrastre(evento) {
 function moverArrastre(evento) {
     if (!isMouseDown) return; 
 
-    if (evento.touches) {
-        // ⭐ CORRECCIÓN TÁCTIL: Esto detiene el scroll de la página y soluciona el problema de sensibilidad.
+    if (evento.touches && evento.cancelable) {
+        // Detiene el scroll de la página solo si es posible.
         evento.preventDefault(); 
     }
     
-    // A partir de aquí, solo procesamos si hay color activo (evita errores si se arrastra fuera del canvas)
+    // A partir de aquí, solo procesamos si hay color activo 
     if (colorActivo === null) return; 
     
     const celdaActual = obtenerCeldaDesdeEvento(evento.touches ? evento.touches[0] : evento);
@@ -411,12 +417,12 @@ canvas.addEventListener('mouseup', finalizarArrastre);
 canvas.addEventListener('mouseleave', finalizarArrastre);
 
 // Eventos Táctiles
-canvas.addEventListener('touchstart', iniciarArrastre);
-canvas.addEventListener('touchmove', moverArrastre);
+canvas.addEventListener('touchstart', iniciarArrastre, { passive: false });
+canvas.addEventListener('touchmove', moverArrastre, { passive: false });
 canvas.addEventListener('touchend', finalizarArrastre);
 canvas.addEventListener('touchcancel', finalizarArrastre);
 
-// El reajuste ya no es necesario si el tamaño es fijo
+
 window.addEventListener('resize', () => {
     actualizarCanvas();
 });
