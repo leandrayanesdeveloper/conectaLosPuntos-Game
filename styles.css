@@ -19,7 +19,6 @@ body {
     background-blend-mode: multiply;
     background-position: center center;
     background-attachment: fixed; 
-    padding-bottom: 50px;
     width: 100%;
     min-height: 100vh;
     margin: 0; 
@@ -84,12 +83,11 @@ h4 {
 }
 
  .footer-container {
-
     max-width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    margin-top: 10px;
+    margin-top: 30px;
     text-align: center;
     font-weight: lighter;
 }
@@ -97,7 +95,7 @@ h4 {
 .footer-column {
     flex: 1;
     min-width: 250px;
-    margin: 10px;
+    margin: 45px;
     color: white;
 
 }
