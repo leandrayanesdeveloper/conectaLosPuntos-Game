@@ -83,32 +83,30 @@ h4 {
     text-align: center;
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    margin-top: auto;
-}
+ .footer-container {
 
-.footer-container {
     max-width: 100%;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; 
+    flex-wrap: nowrap;
+    margin-top: 10px;
     text-align: center;
     font-weight: lighter;
-    justify-content: center; 
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+    color: white;
+
 }
 
 p strong {
     font-weight: bold;
     color: white;
 }   
-.footer-column {
-    flex: 1 1 100%; 
-    min-width: unset;  
-    color: white;
-}
+
 
 a {
     color: #ffffff;
